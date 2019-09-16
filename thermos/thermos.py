@@ -3,17 +3,20 @@ from logging import DEBUG
 
 from flask import Flask, render_template, request, redirect, url_for, flash
 
+from thermos.forms import BookmarkForm
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = b'\xda\x0cx\xcf\xd1Qsf\x05,\xddI\xa7\x84}B\xca\x97\xe0Qo\xe7T\xdd'
 
 bookmarks = []
 
 
-def store_bookmark(url):
+def store_bookmark(url, description):
     bookmarks.append(dict(
         url=url,
         user="maurice",
-        date=datetime.utcnow()
+        date=datetime.utcnow(),
+        description=description
     ))
 
 
@@ -29,12 +32,14 @@ def index():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-    if request.method == "POST":
-        url = request.form['url']
-        store_bookmark(url)
-        flash("Stored bookmark '{}'".format(url))
+    form = BookmarkForm()
+    if form.validate_on_submit():
+        url = form.url.data
+        description = form.description.data
+        store_bookmark(url, description)
+        flash("Stored '{}'".format(description))
         return redirect(url_for('index'))
-    return render_template('add.html')
+    return render_template('add.html', form=form)
 
 
 @app.errorhandler(404)
