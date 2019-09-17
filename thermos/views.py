@@ -1,4 +1,5 @@
 from flask import render_template, flash, redirect, url_for, abort
+from flask_login import login_required
 
 from thermos import app, db
 from .forms import BookmarkForm
@@ -17,6 +18,7 @@ def index():
 
 
 @app.route('/add', methods=['GET', 'POST'])
+@login_required
 def add():
     form = BookmarkForm()
     if form.validate_on_submit():
