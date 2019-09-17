@@ -1,20 +1,11 @@
-import os
-from _datetime import datetime
+from flask import render_template, flash, redirect, url_for, abort
 
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-
+from thermos import app, db
 from .forms import BookmarkForm
-from .models import Bookmark, User
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = b'\xda\x0cx\xcf\xd1Qsf\x05,\xddI\xa7\x84}B\xca\x97\xe0Qo\xe7T\xdd'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'thermos.db')
-db = SQLAlchemy(app)
+from .models import User, Bookmark
 
 
+# Fake login
 def logged_in_user():
     return User.query.filter_by(username='milagan').first()
 
@@ -39,6 +30,12 @@ def add():
     return render_template('add.html', form=form)
 
 
+@app.route('/user/<username>')
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('user.html', user=user)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -47,7 +44,3 @@ def page_not_found(e):
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('500.html'), 500
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

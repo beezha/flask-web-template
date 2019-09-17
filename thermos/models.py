@@ -1,8 +1,6 @@
 from datetime import datetime
-
 from sqlalchemy import desc
-
-from .thermos import db
+from thermos import db
 
 
 class Bookmark(db.Model):

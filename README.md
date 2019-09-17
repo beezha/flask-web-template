@@ -24,7 +24,7 @@ Flask Web Template
 ### Manage script
 ```
 $ python manage.py
-$ python manager.py dropdb
-$ python manager.py initdb
-$ python manager.py runserver
+$ python manage.py dropdb
+$ python manage.py initdb
+$ python manage.py runserver
 ```

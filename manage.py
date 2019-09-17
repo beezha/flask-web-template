@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 
-from thermos.thermos import app, db
+from thermos import app, db
 from thermos.models import User
-from flask.ext.script import Manager, prompt_bool
+from flask_script import Manager, prompt_bool
 
 manager = Manager(app)
 
@@ -10,9 +10,9 @@ manager = Manager(app)
 @manager.command
 def initdb():
     db.create_all()
-    db.session.add(User(username="milagan", email="milagan@mail.com", password="test"))
+    db.session.add(User(username="milagan", email="milagan@mail.com"))
 
-    db.session.add(User(username="milagan1", email="milagan1@mail.com", password="test"))
+    db.session.add(User(username="milagan1", email="milagan1@mail.com"))
 
     db.session.commit()
     print
