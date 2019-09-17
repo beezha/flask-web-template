@@ -33,8 +33,8 @@ def testdb():
     Initializes the test database.
     """
     db.create_all()
-    db.session.add(User(username="milagan", email="milagan@mail.com"))
-    db.session.add(User(username="milagan1", email="milagan1@mail.com"))
+    db.session.add(User(username="milagan", email="milagan@mail.com", password="test"))
+    db.session.add(User(username="milagan1", email="milagan1@mail.com", password="test"))
     db.session.commit()
     print('Initialized the database for testing')
 
