@@ -26,5 +26,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True)
     bookmarks = db.relationship('Bookmark', backref='user', lazy='dynamic')
 
+    @staticmethod
+    def get_by_username(username):
+        return User.query.filter_by(username=username).first()
+
     def __repr__(self):
         return "<User '{}'>".format(self.username)
