@@ -20,3 +20,11 @@ Flask Web Template
 >>> User.query.get(1)
 >>> User.query.filter_by(username="milagan").all()
 ```
+
+### Manage script
+```
+$ python manage.py
+$ python manager.py dropdb
+$ python manager.py initdb
+$ python manager.py runserver
+```
