@@ -11,7 +11,7 @@ Thermos -- Bookmarks for user {{ user.username }}
         <header>
              <h1>Bookmarks for {{ user.username }}</h1>
 
-            {% if bookmarks|length > 0 %}
+            {% if bookmarks.count() > 0 %}
                 {% include "bookmark_list.html" %}
             {% else %}
                 This user has not added any bookmarks yet.

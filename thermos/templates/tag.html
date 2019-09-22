@@ -11,15 +11,15 @@ Thermos -- Bookmarks tagged {{ tag }}
             <h1>Bookmarks tagged {{ tag }}</h1>
 
 
-            {{ paginate.render_pagination(pagination, 'tag', name=tag.name) }}
+{#            {{ paginate.render_pagination(pagination, 'tag', name=tag.name) }}#}
 
-            {% if bookmarks|length > 0 %}
+            {% if bookmarks.count() > 0 %}
                 {% include "bookmark_list.html" %}
             {% else %}
                 There are no bookmarks with this tag.
             {% endif %}
 
-            {{ paginate.render_pagination(pagination, 'tag', name=tag.name) }}
+{#            {{ paginate.render_pagination(pagination, 'tag', name=tag.name) }}#}
         </header>
 
     </article>

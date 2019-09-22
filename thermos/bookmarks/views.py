@@ -1,5 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, abort
 from flask_login import login_required, current_user
+from sqlalchemy import desc
 
 from . import bookmarks
 from .forms import BookmarkForm
@@ -57,10 +58,12 @@ def delete(bookmark_id):
 @bookmarks.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    return render_template('user.html', user=user)
+    bookmarks = user.bookmarks
+    return render_template('user.html', user=user, bookmarks=bookmarks)
 
 
 @bookmarks.route('/tag/<name>')
 def tag(name):
     tag = Tag.query.filter_by(name=name).first_or_404()
-    return render_template('tag.html', tag=tag)
+    bookmarks = tag.bookmarks
+    return render_template('tag.html', tag=tag, bookmarks=bookmarks)
