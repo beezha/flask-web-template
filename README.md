@@ -29,21 +29,31 @@ User.query.filter_by(username="milagan").all()
 
 ### Manage script
 ```shell script
-python manage.py
-python manage.py drop_db
-python manage.py insert_data
-python manage.py runserver
+$ python manage.py
+$ python manage.py drop_db
+$ python manage.py insert_data
+$ python manage.py runserver
 ```
 
 ### DB migration
 ```shell script
-python manage.py db init
-python manage.py db migrate -m "initial"
+$ python manage.py db init
+$ python manage.py db migrate -m "initial"
 ```
 
 ### Upgrade database to latest version
 ```shell script
-python manage.py db upgrade
-python manage.py db downgrade
-python manage.py db downgrade --tag initial
+$ python manage.py db upgrade
+$ python manage.py db downgrade
+$ python manage.py db downgrade --tag initial
+```
+
+### Setting environment before running
+```shell script
+$ THERMOS_ENV=dev
+```
+
+### Testing
+```shell script
+$ nosetests
 ```

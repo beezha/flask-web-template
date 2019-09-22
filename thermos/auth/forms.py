@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo, \
     ValidationError
@@ -6,14 +6,14 @@ from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo, \
 from ..models import User
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     username = StringField('Your Username:', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Log In')
 
 
-class SignupForm(Form):
+class SignupForm(FlaskForm):
     username = StringField('Username',
                            validators=[
                                DataRequired(), Length(3, 80),

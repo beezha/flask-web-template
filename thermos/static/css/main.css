@@ -165,7 +165,6 @@ a,
 a:visited {
     color: #1E5373;
 }
-
 a:hover, aside a:hover, aside a:visited:hover {
     color: #D39447;
 }
@@ -204,7 +203,7 @@ footer a:visited {
 
 /* flashes styling */
 
-.flashes ul {
+.flashes ul{
     background: #FFD6A3;
     color: #000;
 }
@@ -263,7 +262,7 @@ tr.submit button {
 
 input, textarea,
 div.select2-container {
-    width: 100%;
+    width:100%;
 }
 
 input[type="checkbox"],
@@ -277,15 +276,17 @@ div.select2-container {
 }
 
 
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
 @media only screen and (min-width: 480px) {
 
-    /* ====================
-        INTERMEDIATE: Menu
-       ==================== */
+/* ====================
+    INTERMEDIATE: Menu
+   ==================== */
+
     nav a {
         float: left;
         width: 27%;
@@ -302,9 +303,10 @@ div.select2-container {
         margin-right: 0;
     }
 
-    /* ========================
-        INTERMEDIATE: IE Fixes
-       ======================== */
+/* ========================
+    INTERMEDIATE: IE Fixes
+   ======================== */
+
     nav ul li {
         display: inline;
     }
@@ -316,19 +318,21 @@ div.select2-container {
 
 @media only screen and (min-width: 768px) {
 
-    /* ====================
-        WIDE: CSS3 Effects
-       ==================== */
+/* ====================
+    WIDE: CSS3 Effects
+   ==================== */
+
     .header-container,
     .main aside {
         -webkit-box-shadow: 0 5px 10px #aaa;
-        -moz-box-shadow: 0 5px 10px #aaa;
-        box-shadow: 0 5px 10px #aaa;
+           -moz-box-shadow: 0 5px 10px #aaa;
+                box-shadow: 0 5px 10px #aaa;
     }
 
-    /* ============
-        WIDE: Menu
-       ============ */
+/* ============
+    WIDE: Menu
+   ============ */
+
     .title {
         float: left;
     }
@@ -338,9 +342,10 @@ div.select2-container {
         width: 38%;
     }
 
-    /* ============
-        WIDE: Main
-       ============ */
+/* ============
+    WIDE: Main
+   ============ */
+
     .main article {
         float: left;
         width: 57%;
@@ -354,9 +359,10 @@ div.select2-container {
 
 @media only screen and (min-width: 1140px) {
 
-    /* ===============
-        Maximal Width
-       =============== */
+/* ===============
+    Maximal Width
+   =============== */
+
     .wrapper {
         width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
