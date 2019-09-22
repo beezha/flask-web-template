@@ -32,7 +32,7 @@ def insert_data():
     add_bookmark("http://www.reddit.com", "Reddit. Frontpage of the internet", "news,coolstuff,fun")
     add_bookmark("http://www.sqlalchemyorg", "Nice ORM framework", "python,orm,databases")
 
-    second_user = User(username="milagan1", email="milagan@example.com", password="test")
+    second_user = User(username="milagan1", email="milagan1@example.com", password="test")
     db.session.add(second_user)
     db.session.commit()
     print('Initialized the database')

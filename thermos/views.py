@@ -3,7 +3,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 
 from thermos import app, db, login_manager
 from .forms import BookmarkForm, LoginForm, SignupForm
-from .models import User, Bookmark
+from .models import User, Bookmark, Tag
 
 
 @login_manager.user_loader
@@ -24,6 +24,7 @@ def add():
     if form.validate_on_submit():
         url = form.url.data
         description = form.description.data
+        tags = form.description.data
         bm = Bookmark(user=current_user, url=url, description=description, tags=tags)
         db.session.add(bm)
         db.session.commit()
@@ -84,6 +85,12 @@ def signup():
         flash('Welcome, {}! Please login.'.format(user.username))
         return redirect(url_for('login'))
     return render_template("signup.html", form=form)
+
+
+@app.route('/tag/<name>')
+def tag(name):
+    tag = Tag.query.filter_by(name=name).first_or_404()
+    return render_template('tag.html', tag=tag)
 
 
 @app.errorhandler(404)
