@@ -3,7 +3,7 @@ Flask Web Template
 
 ## Initializing the database
 ```python
-from thermos.thermos import db
+from thermos import db
 from thermos.models import User, Bookmark
 
 db.create_all()
